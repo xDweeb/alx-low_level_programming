@@ -1,26 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "main.h"
+#include "search_algos.h"
 
 /**
- * main - check the code
+ * linear_search - searches for a value in an array of
+ * integers using the Linear search algorithm
  *
- * @ac: represents the argument count, which is the number of arguments
- * @av: is an array of strings containing the actual arguments.
- * Return: Always 0.
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: Always EXIT_SUCCESS
  */
-int main(int ac, char **av)
+int linear_search(int *array, size_t size, int value)
 {
-	ssize_t n;
+	int i;
 
-	if (ac != 2)
+	if (array == NULL)
+		return (-1);
+
+	for (i = 0; i < (int)size; i++)
 	{
-		dprintf(2, "Usage: %s filename\n", av[0]);
-		exit(1);
+		printf("Value checked array[%u] = [%d]\n", i, array[i]);
+		if (value == array[i])
+			return (i);
 	}
-	n = read_textfile(av[1], 114);
-	printf("\n(printed chars: %li)\n", n);
-	n = read_textfile(av[1], 1024);
-	printf("\n(printed chars: %li)\n", n);
-	return (0);
+	return (-1);
 }
